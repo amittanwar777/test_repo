@@ -106,4 +106,4 @@ while (($#));
 
                                 echo -n "["$BOLD""$COLOR"m"
                                 cat
-                                echo -n "[0m"
+                                cdncdmlsmclkdnvecho -n "[0m"
