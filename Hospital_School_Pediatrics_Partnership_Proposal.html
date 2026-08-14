@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hospital–School Pediatrics Partnership Program</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EC;
+    --paper-2:#EFEADB;
+    --ink:#1E2E23;
+    --ink-soft:#4C5C50;
+    --forest:#2F5D4B;
+    --forest-deep:#1D3D30;
+    --sage:#B9D3B7;
+    --sage-pale:#E4EEDF;
+    --apricot:#E2914F;
+    --apricot-deep:#B5652A;
+    --card:#FFFFFF;
+    --rule: rgba(30,46,35,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 48px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; margin:0; color:var(--forest-deep);}
+  .eyebrow{
+    font-family:'Work Sans', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--forest);
+  }
+  .eyebrow::before{content:"◆ "; color:var(--apricot);}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:var(--forest-deep);
+    color:#F2EFE4;
+    overflow:hidden;
+    padding:90px 0 110px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 14% 20%, rgba(185,211,183,0.16), transparent 40%),
+      radial-gradient(circle at 88% 78%, rgba(226,145,79,0.14), transparent 45%);
+  }
+  .hero .wrap{position:relative;}
+  .hero .eyebrow{color:var(--sage);}
+  .hero .eyebrow::before{color:var(--apricot);}
+  .hero h1{
+    color:#FBF9F2;
+    font-size:56px;
+    line-height:1.06;
+    margin:22px 0 26px;
+    max-width:640px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lede{
+    max-width:520px;
+    font-size:18px;
+    color:#CBDACE;
+    margin:0 0 40px;
+  }
+  .hero .stat-row{
+    display:flex; gap:0;
+    border-top:1px solid rgba(242,239,228,0.22);
+    margin-top:46px;
+    padding-top:26px;
+  }
+  .hero .stat{
+    flex:1;
+    padding-right:28px;
+    border-right:1px solid rgba(242,239,228,0.16);
+  }
+  .hero .stat:last-child{border-right:none;}
+  .hero .stat .num{font-family:'Fraunces',serif; font-size:32px; color:#FBF9F2; font-weight:600;}
+  .hero .stat .lbl{font-size:12.5px; color:#A9BFAE; margin-top:4px;}
+
+  /* ===== SECTION generic ===== */
+  section{padding:76px 0;}
+  section + section{border-top:1px solid var(--rule);}
+  .section-head{max-width:600px; margin-bottom:44px;}
+  .section-head h2{font-size:34px; margin-top:14px; letter-spacing:-0.01em;}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:14px;}
+
+  /* ===== overview split ===== */
+  .overview{display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:start;}
+  .overview .visual{
+    background:var(--forest);
+    border-radius:6px;
+    aspect-ratio:4/5;
+    position:relative;
+    overflow:hidden;
+  }
+  .overview .visual svg{width:100%; height:100%; display:block;}
+  .overview .copy p{font-size:17px; color:var(--ink); margin:0 0 20px;}
+  .overview .copy p.hi{
+    font-family:'Fraunces',serif; font-size:22px; font-weight:500; color:var(--forest-deep); line-height:1.4;
+  }
+
+  /* ===== health card signature element ===== */
+  .card-signature{
+    background:var(--forest-deep);
+    border-radius:8px;
+    padding:2px;
+  }
+  .health-card{
+    background:linear-gradient(135deg, var(--forest) 0%, #26493B 100%);
+    border-radius:7px;
+    padding:32px 34px;
+    color:#F2EFE4;
+    position:relative;
+    overflow:hidden;
+  }
+  .health-card::after{
+    content:"";
+    position:absolute; right:-40px; top:-40px;
+    width:180px; height:180px;
+    border-radius:50%;
+    background:rgba(226,145,79,0.14);
+  }
+  .health-card .top{display:flex; justify-content:space-between; align-items:flex-start; position:relative;}
+  .health-card .brand{font-family:'Fraunces',serif; font-size:15px; letter-spacing:0.02em; color:#F2EFE4;}
+  .health-card .brand .dot{color:var(--apricot);}
+  .health-card .id{font-size:11px; letter-spacing:0.08em; color:#A9BFAE; text-transform:uppercase;}
+  .health-card .name{
+    font-family:'Fraunces',serif; font-size:26px; margin-top:26px; color:#FBF9F2;
+  }
+  .health-card .sub{font-size:13px; color:#B7CBB9; margin-top:4px;}
+  .health-card .row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+    margin-top:26px; padding-top:20px; border-top:1px solid rgba(242,239,228,0.2);
+    position:relative;
+  }
+  .health-card .row .k{font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:#93AC97;}
+  .health-card .row .v{font-size:14.5px; margin-top:4px; color:#F2EFE4; font-weight:500;}
+
+  /* ===== services grid ===== */
+  .services{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:8px; overflow:hidden;}
+  .svc{background:var(--card); padding:30px 26px;}
+  .svc .tag{
+    display:inline-block; font-size:11px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--apricot-deep); font-weight:600; margin-bottom:14px;
+  }
+  .svc h3{font-size:18px; font-weight:600; color:var(--forest-deep); margin-bottom:10px; line-height:1.3;}
+  .svc p{font-size:14.5px; color:var(--ink-soft); margin:0;}
+  .svc.accent{background:var(--forest-deep); color:#F2EFE4;}
+  .svc.accent .tag{color:var(--sage);}
+  .svc.accent h3{color:#FBF9F2;}
+  .svc.accent p{color:#C4D6C6;}
+
+  /* ===== benefits two-col ===== */
+  .benefits-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  .benefit-col .head{display:flex; align-items:baseline; gap:10px; margin-bottom:22px;}
+  .benefit-col .head .n{font-family:'Fraunces',serif; font-size:15px; color:var(--apricot-deep); font-weight:600;}
+  .benefit-col .head h3{font-size:20px;}
+  .benefit-item{padding:18px 0; border-top:1px solid var(--rule);}
+  .benefit-item:last-child{padding-bottom:0;}
+  .benefit-item .t{font-weight:600; font-size:15.5px; color:var(--forest-deep); margin-bottom:5px;}
+  .benefit-item .d{font-size:14.5px; color:var(--ink-soft); line-height:1.55;}
+
+  /* ===== why lead ===== */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .why-item{padding:26px 20px 0; border-top:2px solid var(--forest);}
+  .why-item .t{font-family:'Fraunces',serif; font-weight:600; font-size:17px; color:var(--forest-deep); margin-bottom:8px; line-height:1.3;}
+  .why-item .d{font-size:14px; color:var(--ink-soft); line-height:1.55;}
+
+  /* ===== roadmap timeline ===== */
+  .roadmap{position:relative; padding-left:2px;}
+  .rm-row{
+    display:grid; grid-template-columns:120px 1fr; gap:24px;
+    padding:22px 0; border-top:1px solid var(--rule); align-items:baseline;
+  }
+  .rm-row:first-child{border-top:none;}
+  .rm-row .phase{font-family:'Fraunces',serif; font-size:15px; color:var(--apricot-deep); font-weight:600;}
+  .rm-row .desc{font-size:15.5px; color:var(--ink);}
+
+  /* ===== two panel: parents / digital ===== */
+  .panel-two{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--rule); border-radius:8px; overflow:hidden;}
+  .panel{padding:38px 36px; background:var(--card);}
+  .panel + .panel{border-left:1px solid var(--rule);}
+  .panel h3{font-size:20px; margin-bottom:18px;}
+  .panel ul{list-style:none; margin:0; padding:0;}
+  .panel li{
+    font-size:14.5px; color:var(--ink); padding:10px 0 10px 26px; position:relative;
+    border-top:1px solid var(--rule);
+  }
+  .panel li:first-child{border-top:none;}
+  .panel li::before{
+    content:"✓"; position:absolute; left:0; top:10px; color:var(--forest); font-weight:600; font-size:13px;
+  }
+
+  /* ===== outcomes strip ===== */
+  .outcomes{
+    background:var(--forest-deep); color:#F2EFE4;
+    border-radius:8px; padding:44px 40px;
+    display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+  }
+  .outcomes .oc{padding:0 18px; border-left:1px solid rgba(242,239,228,0.18);}
+  .outcomes .oc:first-child{border-left:none; padding-left:0;}
+  .outcomes .oc .n{font-family:'Fraunces',serif; font-size:15px; color:var(--sage); margin-bottom:8px;}
+  .outcomes .oc .t{font-size:14.5px; line-height:1.5; color:#EDEAE0;}
+
+  /* ===== footer ===== */
+  footer{padding:50px 0 70px; text-align:center;}
+  footer .eyebrow{justify-content:center; display:flex;}
+  footer p{color:var(--ink-soft); font-size:14px; margin-top:10px;}
+
+  @media(max-width:820px){
+    .wrap{padding:0 24px;}
+    .hero h1{font-size:38px;}
+    .overview{grid-template-columns:1fr;}
+    .services{grid-template-columns:1fr;}
+    .benefits-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .panel-two{grid-template-columns:1fr;}
+    .panel + .panel{border-left:none; border-top:1px solid var(--rule);}
+    .outcomes{grid-template-columns:1fr 1fr; gap:22px;}
+    .outcomes .oc{border-left:none; padding-left:0; padding-top:16px; border-top:1px solid rgba(242,239,228,0.18);}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Program proposal</div>
+    <h1>A pediatrician for every school child, all year round.</h1>
+    <p class="lede">A structured partnership between the hospital and nearby schools — combining preventive checkups, a lifelong digital health record, and a recurring model both sides can rely on.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">₹50</div><div class="lbl">Per student, per month</div></div>
+      <div class="stat"><div class="num">2×</div><div class="lbl">Free checkups in school, yearly</div></div>
+      <div class="stat"><div class="num">1</div><div class="lbl">Health card, for life</div></div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap overview">
+    <div class="visual">
+      <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="500" fill="#2F5D4B"/>
+        <circle cx="330" cy="60" r="120" fill="#3A6B57"/>
+        <circle cx="40" cy="460" r="90" fill="#26493B"/>
+        <g stroke="#E4EEDF" stroke-width="1.4" fill="none" opacity="0.55">
+          <path d="M60 250 h60 v-40 h50 v90 h50 v-70 h60"/>
+        </g>
+        <circle cx="60" cy="250" r="5" fill="#E2914F"/>
+        <circle cx="220" cy="300" r="5" fill="#E2914F"/>
+        <circle cx="330" cy="230" r="5" fill="#E2914F"/>
+        <text x="60" y="360" fill="#F2EFE4" font-family="Fraunces, serif" font-size="26" font-weight="600">Growth,</text>
+        <text x="60" y="392" fill="#F2EFE4" font-family="Fraunces, serif" font-size="26" font-weight="600">tracked</text>
+        <text x="60" y="392" fill="#F2EFE4" font-family="Fraunces, serif" font-size="26" font-weight="600" dy="34">from year one.</text>
+      </svg>
+    </div>
+    <div class="copy">
+      <div class="eyebrow">Program overview</div>
+      <h2 style="margin-top:14px; font-size:30px;">Tie-up with nearby schools</h2>
+      <p class="hi">The hospital proposes to partner directly with nearby schools, embedding pediatric care into the school year rather than waiting for families to come to the hospital.</p>
+      <p>Each enrolled student receives a structured, ongoing health partnership — regular checkups, easy access to consultation, and a single record that follows them as they grow.</p>
+      <p>It is a low-friction way for schools to offer real healthcare value to parents, and a natural, trust-building front door for the hospital into the community it serves.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What's included</div>
+      <h2>Services offered under the program</h2>
+      <p>Every enrolled student is covered by a consistent, predictable set of services — anchored by one health card that consolidates everything in one place.</p>
+    </div>
+
+    <div class="card-signature" style="margin-bottom:44px;">
+      <div class="health-card">
+        <div class="top">
+          <div class="brand"><span class="dot">◆</span> Annual health card</div>
+          <div class="id">Student ID · 000482</div>
+        </div>
+        <div class="name">Consolidated pediatric record</div>
+        <div class="sub">Every checkup, screening and consultation, in one card.</div>
+        <div class="row">
+          <div><div class="k">Growth</div><div class="v">Tracked biannually</div></div>
+          <div><div class="k">Vision & hearing</div><div class="v">Screened yearly</div></div>
+          <div><div class="k">Consultation</div><div class="v">Free, year-round</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services">
+      <div class="svc accent">
+        <div class="tag">Access</div>
+        <h3>Free pediatrics consultation</h3>
+        <p>Round-the-year access to consultation at the hospital, at no extra cost to enrolled families.</p>
+      </div>
+      <div class="svc">
+        <div class="tag">Pricing</div>
+        <h3>₹50 / month, per student</h3>
+        <p>A bare-minimum monthly charge keeps the program affordable and easy for schools to adopt at scale.</p>
+      </div>
+      <div class="svc">
+        <div class="tag">In-school</div>
+        <h3>2 annual checkups on campus</h3>
+        <p>Two free health checkups conducted in school each year — no travel, no missed class time.</p>
+      </div>
+      <div class="svc">
+        <div class="tag">Screening</div>
+        <h3>Growth &amp; vision assessment</h3>
+        <p>Height, weight and vision checkups tracked against age-appropriate benchmarks.</p>
+      </div>
+      <div class="svc">
+        <div class="tag">Screening</div>
+        <h3>Hearing &amp; oral checkup</h3>
+        <p>Hearing screening and oral examination included in every biannual visit.</p>
+      </div>
+      <div class="svc">
+        <div class="tag">Clinical</div>
+        <h3>Vaccination &amp; general exam</h3>
+        <p>Vaccination consultation alongside a general and physical examination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The case for the hospital</div>
+      <h2>Why this partnership makes sense</h2>
+    </div>
+
+    <div class="benefits-grid" style="margin-bottom:60px;">
+      <div class="benefit-col">
+        <div class="head"><span class="n">01</span><h3>Community outreach</h3></div>
+        <div class="benefit-item">
+          <div class="t">A trusted pediatric provider</div>
+          <div class="d">Positions the hospital as a trusted pediatric healthcare provider within the community, not just a place families visit when something is wrong.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">A large, consistent patient base</div>
+          <div class="d">Direct access to a large, recurring base of school-going children and their families, visit after visit.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">Relationships that start young</div>
+          <div class="d">Builds long-term patient relationships from childhood, fostering loyalty and continuity of care across generations.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">Stronger local presence</div>
+          <div class="d">Increases the hospital's visibility and recognition among families, exactly where it matters most.</div>
+        </div>
+      </div>
+      <div class="benefit-col">
+        <div class="head"><span class="n">02</span><h3>Revenue &amp; sustainability</h3></div>
+        <div class="benefit-item">
+          <div class="t">Follow-up visits and treatments</div>
+          <div class="d">In-hospital consultations naturally drive follow-up visits and additional treatment revenue.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">Documented continuity of care</div>
+          <div class="d">Annual health cards create a documented patient record, supporting continuity of care over time.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">Recurring revenue, at scale</div>
+          <div class="d">A steady, recurring revenue stream at ₹50 per student per month, compounding across every enrolled school.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="t">A low barrier to adoption</div>
+          <div class="d">The low-cost entry point encourages schools to say yes quickly, maximizing enrollment volume.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item"><div class="t">Preferred partner</div><div class="d">Establishes the hospital as the preferred pediatric partner for schools across the region.</div></div>
+      <div class="why-item"><div class="t">Scalable model</div><div class="d">A model that's replicable across multiple schools with minimal added complexity.</div></div>
+      <div class="why-item"><div class="t">Socially responsible</div><div class="d">Combines social responsibility with sustainable, measurable business growth.</div></div>
+      <div class="why-item"><div class="t">Measurable outcomes</div><div class="d">Delivers real health outcomes for children, strengthening hospital reputation over time.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Getting started</div>
+      <h2>Implementation roadmap</h2>
+    </div>
+    <div class="roadmap">
+      <div class="rm-row"><div class="phase">Phase 1</div><div class="desc">Sign a hospital–school MoU formalizing the partnership terms.</div></div>
+      <div class="rm-row"><div class="phase">Phase 2</div><div class="desc">Collect student enrollment and parental consent.</div></div>
+      <div class="rm-row"><div class="phase">Phase 3</div><div class="desc">Issue an annual health card to every enrolled student.</div></div>
+      <div class="rm-row"><div class="phase">Phase 4</div><div class="desc">Conduct biannual health camps on school premises.</div></div>
+      <div class="rm-row"><div class="phase">Phase 5</div><div class="desc">Route referrals and follow-up care back to the hospital.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="panel-two">
+      <div class="panel">
+        <div class="eyebrow">For families</div>
+        <h3 style="margin-top:12px;">Benefits for schools &amp; parents</h3>
+        <ul>
+          <li>Early identification of health issues</li>
+          <li>Reduced absenteeism through preventive care</li>
+          <li>Health reports shared directly with parents</li>
+          <li>Priority pediatric consultation</li>
+          <li>Improved confidence in school healthcare</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="eyebrow">The record</div>
+        <h3 style="margin-top:12px;">Digital health record</h3>
+        <ul>
+          <li>A unique health profile for every child</li>
+          <li>Growth and BMI tracking over time</li>
+          <li>Automated vaccination reminders</li>
+          <li>Digital consultation history</li>
+          <li>Annual comparative health report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The outcome</div>
+      <h2>What success looks like</h2>
+    </div>
+    <div class="outcomes">
+      <div class="oc"><div class="n">01</div><div class="t">Healthier students</div></div>
+      <div class="oc"><div class="n">02</div><div class="t">Higher parent satisfaction</div></div>
+      <div class="oc"><div class="n">03</div><div class="t">Long-term hospital engagement</div></div>
+      <div class="oc"><div class="n">04</div><div class="t">Sustainable recurring revenue</div></div>
+      <div class="oc"><div class="n">05</div><div class="t">A scalable partnership model</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="eyebrow">Hospital–School Pediatrics Partnership</div>
+    <p>Prepared as a proposal for review. Terms subject to discussion with participating schools.</p>
+  </div>
+</footer>
+
+</body>
+</html>
